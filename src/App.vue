@@ -1,9 +1,15 @@
 <template>
   <div id="app">
     <h1>Vue Composition API</h1>
+    <div>
+      <Button label="Click me!" />
+    </div>
     <div v-for="[key, value] of counterEntries">
       <p>{{ key }}: {{ value }}</p>
     </div>
+    <CounterCompositionApiv3
+      @counter-update="updateCounter('Composition API V3', $event)"
+    />
     <CounterOptionsApi @counter-update="updateCounter('Options API', $event)" />
     <CounterCompositionApi
       @counter-update="updateCounter('Composition API V1', $event)"
@@ -11,13 +17,12 @@
     <CounterCompositionApiv2
       @counter-update="updateCounter('Composition API V2', $event)"
     />
-    <CounterCompositionApiv3
-      @counter-update="updateCounter('Composition API V3', $event)"
-    />
   </div>
 </template>
 
 <script>
+import Button from 'primevue/button'
+
 import CounterOptionsApi from './components/CounterCompositionApi.vue';
 import CounterCompositionApi from './components/CounterCompositionApi.vue';
 import CounterCompositionApiv2 from './components/CounterCompositionApiv2.vue';
@@ -26,6 +31,7 @@ import CounterCompositionApiv3 from './components/CounterCompositionApiv3.vue';
 export default {
   name: 'App',
   components: {
+    Button,
     CounterOptionsApi,
     CounterCompositionApi,
     CounterCompositionApiv2,

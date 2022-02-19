@@ -23,11 +23,15 @@ const props = withDefaults(defineProps<Props>(), {
 
 const emit = defineEmits(['counter-update']);
 
-const { count, countPow, increment, decrement, incrementBy } = useCounter(
+const { count, countPow, increment, decrement, incrementBy, DocMenuConfig } = useCounter(
   props.initialValue
 );
 
+console.log('!!!count', { value: count.value, count })
+
 watch(count, (value) => {
   emit('counter-update', value);
+  console.log('!!!watch', { value, countValue: count.value });
 });
+
 </script>

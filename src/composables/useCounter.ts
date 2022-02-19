@@ -15,6 +15,26 @@ export default function useCounter(initialValue: number) {
 
   const countPow = computed(() => count.value * count.value);
 
+  interface IDocMenu {
+    heading: string;
+    route: string;
+    svgIcon?: string;
+    items?: IDocMenu[];
+  }
+
+  const DocMenuConfig: IDocMenu[] = [
+    {
+      heading: 'BANKS',
+      route: 'BANKS_PATH',
+      svgIcon: "/media/icons/duotone/Shopping/ATM.svg",
+    },
+    {
+      heading: 'EMPLOYERS',
+      route: "/employers",
+      svgIcon: "/media/icons/duotone/Home/Building.svg",
+    },
+  ];
+
   onMounted(() => console.log('useCounter mounted'));
 
   return {
@@ -23,5 +43,6 @@ export default function useCounter(initialValue: number) {
     increment,
     decrement,
     incrementBy,
+    DocMenuConfig,
   };
 }
