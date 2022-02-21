@@ -1,10 +1,22 @@
 <template>
   <div id="app">
-    <p>
-      <router-link to="/">Home</router-link>&nbsp;
-      <router-link to="/pinia">Pinia</router-link>
-    </p>
-    <router-view></router-view>
+    <h1>Vue Composition API</h1>
+    <div>
+      <Button label="Click me!" />
+    </div>
+    <div v-for="[key, value] of counterEntries">
+      <p>{{ key }}: {{ value }}</p>
+    </div>
+    <CounterCompositionApiv3
+      @counter-update="updateCounter('Composition API V3', $event)"
+    />
+    <CounterOptionsApi @counter-update="updateCounter('Options API', $event)" />
+    <CounterCompositionApi
+      @counter-update="updateCounter('Composition API V1', $event)"
+    />
+    <CounterCompositionApiv2
+      @counter-update="updateCounter('Composition API V2', $event)"
+    />
   </div>
 </template>
 
